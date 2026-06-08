@@ -4,9 +4,13 @@ import java.util.Scanner;
 
 public class MainMenu {
     public static void MainMenuView(Scanner sc){
-        int choose = 0;
 
-        System.out.println("""
+
+        boolean flag = true;
+        while (flag){
+            int choose = 0;
+
+            System.out.println("""
                 =============== MENU CHÍNH ==============
                 1. Quản lý sản phẩm điện thoại
                 2. QUản lý khách hàng
@@ -16,8 +20,6 @@ public class MainMenu {
                 =========================================
                 """);
 
-        boolean flag = true;
-        while (flag){
             while (true){
                 try {
                     System.out.println("Nhập lựa chon:");

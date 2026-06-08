@@ -4,9 +4,13 @@ import java.util.Scanner;
 
 public class InvoiceManagerMenu {
     public static void InvoiceManagerMenuView(Scanner sc){
-        int choose = 0;
 
-        System.out.println("""
+
+        boolean flag = true;
+        while (flag){
+            int choose = 0;
+
+            System.out.println("""
                 =============== QUẢN LÝ HÓA ĐƠN ==============
                 1. Hiển thị danh sách hóa đơn
                 2. Thêm mới hóa đơn
@@ -15,8 +19,6 @@ public class InvoiceManagerMenu {
                 =========================================
                 """);
 
-        boolean flag = true;
-        while (flag){
             while (true){
                 try {
                     System.out.println("Nhập lựa chon:");

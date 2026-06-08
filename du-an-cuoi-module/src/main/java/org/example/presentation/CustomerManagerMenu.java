@@ -4,9 +4,12 @@ import java.util.Scanner;
 
 public class CustomerManagerMenu {
     public static void CustomerManagerMenuView(Scanner sc){
-        int choose = 0;
 
-        System.out.println("""
+        boolean flag = true;
+        while (flag){
+            int choose = 0;
+
+            System.out.println("""
                 =============== QUẢN LÝ KHÁCH HÀNG ==============
                 1. Hiển thị danh sách khách hàng
                 2. Thêm khách hàng mới
@@ -16,8 +19,6 @@ public class CustomerManagerMenu {
                 =========================================
                 """);
 
-        boolean flag = true;
-        while (flag){
             while (true){
                 try {
                     System.out.println("Nhập lựa chon:");

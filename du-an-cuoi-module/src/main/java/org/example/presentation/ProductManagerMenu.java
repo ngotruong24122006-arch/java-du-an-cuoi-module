@@ -6,9 +6,11 @@ import java.util.Scanner;
 
 public class ProductManagerMenu {
     public static void ProductManagerMenuView(Scanner sc){
-        int choose = 0;
+        boolean flag = true;
+        while (flag){
+            int choose = 0;
 
-        System.out.println("""
+            System.out.println("""
                 =============== QUẢN LÝ SẢN PHẨM ==============
                 1. Hiển thị danh sách sản phẩm
                 2. Thêm sản phẩm mới
@@ -21,8 +23,6 @@ public class ProductManagerMenu {
                 =========================================
                 """);
 
-        boolean flag = true;
-        while (flag){
             while (true){
                 try {
                     System.out.println("Nhập lựa chon:");
@@ -35,17 +35,22 @@ public class ProductManagerMenu {
 
             switch (choose){
                 case 1:
+                    new ProductMangerImpl().display();
                     break;
                 case 2:
                     new ProductMangerImpl().addProduct(sc);
                     break;
                 case 3:
+                    new ProductMangerImpl().updateProduct(sc);
                     break;
                 case 4:
+                    new ProductMangerImpl().deleteProduct(sc);
                     break;
                 case 5:
+                    new ProductMangerImpl().display();
                     break;
                 case 6:
+                    new ProductMangerImpl().searchByBrand(sc);
                     break;
                 case 7:
                     break;

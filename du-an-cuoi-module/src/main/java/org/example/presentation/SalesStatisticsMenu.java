@@ -4,9 +4,12 @@ import java.util.Scanner;
 
 public class SalesStatisticsMenu {
     public static void SalesStatisticsMenuView(Scanner sc){
-        int choose = 0;
+        boolean flag = true;
+        while (flag){
 
-        System.out.println("""
+            int choose = 0;
+
+            System.out.println("""
                 =============== QUẢN LÝ KHÁCH HÀNG ==============
                 1. Doanh thu theo ngày
                 2. Doanh thu theo tháng 
@@ -15,8 +18,6 @@ public class SalesStatisticsMenu {
                 =========================================
                 """);
 
-        boolean flag = true;
-        while (flag){
             while (true){
                 try {
                     System.out.println("Nhập lựa chon:");
