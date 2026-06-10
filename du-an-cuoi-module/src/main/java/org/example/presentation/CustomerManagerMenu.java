@@ -1,5 +1,7 @@
 package org.example.presentation;
 
+import org.example.business.impl.CustomerManagerImpl;
+
 import java.util.Scanner;
 
 public class CustomerManagerMenu {
@@ -32,6 +34,7 @@ public class CustomerManagerMenu {
                 case 1:
                     break;
                 case 2:
+                    new CustomerManagerImpl().addCustomer(sc);
                     break;
                 case 3:
                     break;

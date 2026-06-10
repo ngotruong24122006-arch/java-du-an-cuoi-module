@@ -234,4 +234,52 @@ public class ProductMangerImpl implements ProductManger {
             System.out.println(p);
         }
     }
+
+    @Override
+    public void searchByPrice(Scanner sc) {
+        System.out.println("Nhập Khoảng giá từ:");
+        double min = Double.parseDouble(sc.nextLine());
+        System.out.println("Đến");
+        double max = Double.parseDouble(sc.nextLine());
+
+        List<Product> products = new ProductDAOImpl().getAllByPrice(BigDecimal.valueOf(min),BigDecimal.valueOf(max));
+
+        if (products.isEmpty())
+            System.out.println("brand này chưa có sản phẩm nào ");
+
+        System.out.printf("%-5s %-25s %-15s %-15s %-10s%n",
+                "ID", "Tên sản phẩm", "Brand", "Giá", "Tồn kho");
+
+        System.out.println("--------------------------------------------------------------------------");
+        for (Product p : products){
+            System.out.println(p);
+        }
+    }
+
+    @Override
+    public void searchByName(Scanner sc) {
+        System.out.println("Nhập tên sản phẩm muốn tìm:");
+        String name = sc.nextLine();
+
+        List<Product> products = new ProductDAOImpl().getAllByName(name);
+
+        if (products.isEmpty())
+            System.out.println("brand này chưa có sản phẩm nào ");
+
+        System.out.printf("%-5s %-25s %-15s %-15s %-10s %-15s%n",
+                "ID", "Tên sản phẩm", "Brand", "Giá", "Tồn kho","Trạng Thái");
+
+        System.out.println("--------------------------------------------------------------------------");
+        for (Product product : products){
+            System.out.printf("%-5d %-25s %-15s %-15s %-10d %-15s%n",
+                    product.getId(),
+                    product.getName(),
+                    product.getBrand(),
+                    product.getPrice(),
+                    product.getStock(),
+                    product.getStock() > 0
+                            ? "Còn hàng"
+                            : "Hết hàng");
+        }
+    }
 }

@@ -4,6 +4,7 @@ import org.example.dao.ProductDAO;
 import org.example.model.Product;
 import org.example.utils.DBUtility;
 
+import java.math.BigDecimal;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -179,4 +180,74 @@ public class ProductDAOImpl implements ProductDAO {
         return products;
     }
 
+
+    @Override
+    public List<Product> getAllByPrice(BigDecimal priceMin, BigDecimal priceMax) {
+        List<Product> products = new ArrayList<>();
+
+        Connection con;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+
+        con = DBUtility.openConnection();
+
+        try {
+            pstmt = con.prepareStatement("select * from Product where price between ? and ? order by id asc");
+            pstmt.setBigDecimal(1,priceMin);
+            pstmt.setBigDecimal(2,priceMax);
+
+            rs = pstmt.executeQuery();
+
+            while (rs.next()){
+                products.add(new Product(
+                        rs.getInt("id"),
+                        rs.getString("name"),
+                        rs.getString("brand"),
+                        rs.getBigDecimal("price"),
+                        rs.getInt("stock")
+                ));
+            }
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }finally {
+            DBUtility.closeConnection(rs,pstmt,con);
+        }
+
+        return products;
+    }
+
+    @Override
+    public List<Product> getAllByName(String name) {
+        List<Product> products = new ArrayList<>();
+
+        Connection con;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+
+        con = DBUtility.openConnection();
+
+        try {
+            pstmt = con.prepareStatement("select * from Product where name ilike ?");
+            pstmt.setString(1,"%"+name+"%");
+
+            rs = pstmt.executeQuery();
+
+            while (rs.next()){
+                products.add(new Product(
+                        rs.getInt("id"),
+                        rs.getString("name"),
+                        rs.getString("brand"),
+                        rs.getBigDecimal("price"),
+                        rs.getInt("stock")
+                ));
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }finally {
+            DBUtility.closeConnection(rs,pstmt,con);
+        }
+
+        return products;
+    }
 }

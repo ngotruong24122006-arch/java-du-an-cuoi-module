@@ -47,12 +47,13 @@ public class ProductManagerMenu {
                     new ProductMangerImpl().deleteProduct(sc);
                     break;
                 case 5:
-                    new ProductMangerImpl().display();
-                    break;
-                case 6:
                     new ProductMangerImpl().searchByBrand(sc);
                     break;
+                case 6:
+                    new ProductMangerImpl().searchByPrice(sc);
+                    break;
                 case 7:
+                    new ProductMangerImpl().searchByName(sc);
                     break;
                 case 8:
                     flag = false;

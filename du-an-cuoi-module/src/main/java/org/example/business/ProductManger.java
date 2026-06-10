@@ -8,4 +8,6 @@ public interface ProductManger {
     void deleteProduct(Scanner sc);
     void display();
     void searchByBrand(Scanner sc);
+    void searchByPrice(Scanner sc);
+    void searchByName(Scanner sc);
 }
