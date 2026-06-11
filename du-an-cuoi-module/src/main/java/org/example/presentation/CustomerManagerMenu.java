@@ -32,13 +32,16 @@ public class CustomerManagerMenu {
             }
             switch (choose){
                 case 1:
+                    new CustomerManagerImpl().display(sc);
                     break;
                 case 2:
                     new CustomerManagerImpl().addCustomer(sc);
                     break;
                 case 3:
+                    new CustomerManagerImpl().updateCustomer(sc);
                     break;
                 case 4:
+                    new CustomerManagerImpl().deleteById(sc);
                     break;
                 case 5:
                     flag = false;

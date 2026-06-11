@@ -84,29 +84,31 @@ public class ProductMangerImpl implements ProductManger {
 
     @Override
     public void updateProduct(Scanner sc) {
-        Product product = null;
+        Product productOld = null;
 
         while (true){
             System.out.println("Nhập id sản phẩm muốn sửa:");
             int id = Integer.parseInt(sc.nextLine());
 
-            product = new ProductDAOImpl().getProductById(id);
+            productOld = new ProductDAOImpl().getProductById(id);
 
-            if (product != null){
+            if (productOld != null){
                 break;
             }
 
             System.out.println("Id không tồn tại,vui lòng nhập lại");
         }
 
-        System.out.println("Thông tin hiện tại: "+product.toString());
+        System.out.println("Thông tin hiện tại: "+productOld.toString());
+
+        Product productNew = new Product();
 
         while (true){
             System.out.println("Nhập tên sản phẩm mới:");
             String name = sc.nextLine();
 
             if (!name.trim().isEmpty()){
-                product.setName(name);
+                productNew.setName(name);
                 break;
             }
             System.out.println("Tên sản phẩm không được để chống");
@@ -117,7 +119,7 @@ public class ProductMangerImpl implements ProductManger {
             String bName = sc.nextLine();
 
             if (!bName.trim().isEmpty()){
-                product.setBrand(bName);
+                productNew.setBrand(bName);
                 break;
             }
             System.out.println("Tên hãng sản xuất không được để chống");
@@ -130,7 +132,7 @@ public class ProductMangerImpl implements ProductManger {
                 double price = Double.parseDouble(sc.nextLine());
 
                 if (price>0){
-                    product.setPrice(BigDecimal.valueOf(price));
+                    productNew.setPrice(BigDecimal.valueOf(price));
                     break;
                 }
 
@@ -148,7 +150,7 @@ public class ProductMangerImpl implements ProductManger {
                 int stock = Integer.parseInt(sc.nextLine());
 
                 if (stock >=0){
-                    product.setStock(stock);
+                    productNew.setStock(stock);
                     break;
                 }
 
@@ -159,7 +161,7 @@ public class ProductMangerImpl implements ProductManger {
 
         }
 
-        if (new ProductDAOImpl().updateProduct(product))
+        if (new ProductDAOImpl().updateProduct(productNew))
             System.out.println("Sửa sản phẩm thành công");
         else
             System.out.println("Sửa sản phẩm thất bại");
@@ -172,7 +174,7 @@ public class ProductMangerImpl implements ProductManger {
         Product product = null;
 
         while (true){
-            System.out.println("Nhập id sản phẩm muốn sửa:");
+            System.out.println("Nhập id sản phẩm muốn xóa:");
             int id = Integer.parseInt(sc.nextLine());
 
             product = new ProductDAOImpl().getProductById(id);

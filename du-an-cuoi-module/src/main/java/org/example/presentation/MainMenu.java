@@ -34,8 +34,10 @@ public class MainMenu {
                     ProductManagerMenu.ProductManagerMenuView(sc);
                     break;
                 case 2:
+                    CustomerManagerMenu.CustomerManagerMenuView(sc);
                     break;
                 case 3:
+                    InvoiceManagerMenu.InvoiceManagerMenuView(sc);
                     break;
                 case 4:
                     break;
