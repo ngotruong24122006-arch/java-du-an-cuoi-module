@@ -40,6 +40,7 @@ public class MainMenu {
                     InvoiceManagerMenu.InvoiceManagerMenuView(sc);
                     break;
                 case 4:
+                    SalesStatisticsMenu.SalesStatisticsMenuView(sc);
                     break;
                 case 5:
                     flag = false;

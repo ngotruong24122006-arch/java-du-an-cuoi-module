@@ -1,5 +1,7 @@
 package org.example.presentation;
 
+import org.example.business.impl.SalesStatisticsManagerImpl;
+
 import java.util.Scanner;
 
 public class SalesStatisticsMenu {
@@ -29,10 +31,13 @@ public class SalesStatisticsMenu {
             }
             switch (choose){
                 case 1:
+                    new SalesStatisticsManagerImpl().getRevenueByDay(sc);
                     break;
                 case 2:
+                    new SalesStatisticsManagerImpl().getRevenueByMonth(sc);
                     break;
                 case 3:
+                    new SalesStatisticsManagerImpl().getRevenueByYear(sc);
                     break;
                 case 4:
                     flag = false;

@@ -87,7 +87,7 @@ public class InvoiceManagerImpl implements InvoiceManger {
 
         BigDecimal sum = BigDecimal.ZERO;
         for (InvoiceDetail d : invoiceDetails){
-            sum.add(
+            sum = sum.add(
                     d.getUnitPrice().multiply(
                             BigDecimal.valueOf(d.getQuantity())
                     )
